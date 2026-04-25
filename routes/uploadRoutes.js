@@ -1,19 +1,37 @@
 const express = require("express");
-const router = express.Router();
+const multer = require("multer");
+const path = require("path");
 const { adminAuth } = require("../middlewares/adminAuth");
-const { upload } = require("../middlewares/uploadConfig");
 
-// POST /api/upload/img — admin-only image upload
-router.post("/img", adminAuth, upload.single("image"), (req, res) => {
-    if (!req.file) {
-        return res.status(400).json({ error: "No image file provided" });
-    }
+const router = express.Router();
 
-    res.json({
-        message: "Image uploaded successfully",
-        filename: req.file.filename,
-        path: `/img/region/${req.file.filename}`
-    });
+// Specific storage for locations
+const locationStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "..", "img", "locations"));
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const name = path.basename(file.originalname, ext).replace(/\s+/g, '_');
+    cb(null, `location_${name}_${Date.now()}${ext}`);
+  },
+});
+
+const uploadLocation = multer({ 
+    storage: locationStorage,
+    limits: { fileSize: 5 * 1024 * 1024 }
+});
+
+// POST /api/upload/location — admin-only image upload for locations
+router.post("/location", adminAuth, uploadLocation.single("image"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: "No image file provided" });
+  }
+
+  res.json({
+    message: "Location image uploaded successfully",
+    filename: req.file.filename
+  });
 });
 
 module.exports = router;

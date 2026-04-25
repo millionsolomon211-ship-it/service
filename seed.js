@@ -51,6 +51,8 @@ async function seed() {
         { name: "Gambella Wetlands", region: "Gambella", description: "Vast swamps and rivers home to the white-eared kob migration.", price: 600, rating: "4.4", image: "Gambella_Wetlands.jpg", availableHotels: ["Sentral Hotel", "Tekeze Hotel"] },
         { name: "Jimma Aba Jifar Palace", region: "Oromia", description: "The historic wooden palace of the King of Jimma.", price: 150, rating: "4.3", image: "Jimma_Aba_Jifar_Palace.jpg", availableHotels: ["Sentral Hotel", "Tekeze Hotel"] },
         { name: "Arba Minch Forty Springs", region: "South Ethiopia", description: "Natural springs that give the city its name, near forest walks.", price: 100, rating: "4.2", image: "Arba_Minch_Forty_Springs.jpg", availableHotels: ["Sentral Hotel", "Tekeze Hotel"] },
+        { name: "Bonga Coffee Forest", region: "South West Ethiopia", description: "The birthplace of Arabica coffee, with ancient wild coffee trees.", price: 300, rating: "4.7", image: "Bonga_Coffee_Forest.jpg", availableHotels: ["Sentral Hotel", "Tekeze Hotel"] },
+        { name: "Kafa Biosphere Reserve", region: "South West Ethiopia", description: "A UNESCO reserve protecting a diverse range of flora and fauna.", price: 400, rating: "4.6", image: "Kafa_Biosphere_Reserve.jpg", availableHotels: ["Sentral Hotel", "Tekeze Hotel"] },
         { name: "Bahir Dar Lakefront", region: "Amhara", description: "Beautiful palm-lined avenues and views of the Blue Nile source.", price: 250, rating: "4.6", image: "Bahir_Dar_Lakefront.jpg", availableHotels: ["Sentral Hotel", "Tekeze Hotel"] }
     ];
 

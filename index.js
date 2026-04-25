@@ -5,6 +5,8 @@ const { connectDB } = require("./config/db");
 const regionRoutes = require("./routes/regionRoutes");
 const locationRoutes = require("./routes/locationRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
+const favoriteRoutes = require("./routes/favoriteRoutes");
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -23,6 +25,8 @@ app.use('/img', express.static('img'));
 app.use("/api/regions", regionRoutes);
 app.use("/api/locations", locationRoutes);
 app.use("/api/upload", uploadRoutes);
+app.use("/api/bookings", bookingRoutes);
+app.use("/api/favorites", favoriteRoutes);
 
 app.get("/", (req, res) => {
     res.send("Service API is running!");
