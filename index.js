@@ -1,5 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
+const helmet = require("helmet");
+const cors = require("cors");
 require("dotenv").config();
 const { connectDB } = require("./config/db");
 const regionRoutes = require("./routes/regionRoutes");
@@ -11,10 +13,11 @@ const favoriteRoutes = require("./routes/favoriteRoutes");
 const app = express();
 const port = process.env.PORT || 3001;
 
-
-
-
 // Middleware
+app.use(helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+}));
+app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
