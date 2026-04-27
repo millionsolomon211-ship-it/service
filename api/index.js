@@ -31,8 +31,9 @@ app.use(async (req, res, next) => {
     }
 });
 
-app.use('/img', express.static('img'));
-app.use('/img/region', express.static('img/region')); // Alias to fix plural/singular mismatch
+const path = require("path");
+
+app.use('/img', express.static(path.join(__dirname, '../img')));
 // Routes
 app.use("/api/regions", regionRoutes);
 app.use("/api/locations", locationRoutes);
