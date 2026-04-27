@@ -1,8 +1,8 @@
 const { MongoClient } = require("mongodb");
 require("dotenv").config();
 
-const uri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/service";
-const client = new MongoClient(uri);
+const uri = process.env.MONGO_URI || "mongodb://14153milla_db_user:2EBAlOoryLSgecVq@ac-nvgbqv9-shard-00-00.lkrmu1d.mongodb.net:27017/service?ssl=true&authSource=admin&retryWrites=true&w=majority";
+const client = new MongoClient(uri, { family: 4 });
 
 let db;
 
