@@ -33,7 +33,7 @@ app.use(async (req, res, next) => {
 
 const path = require("path");
 
-app.use('/img', express.static(path.join(__dirname, '../img')));
+app.use('/img', express.static(path.join(__dirname, '../public/img')));
 // Routes
 app.use("/api/regions", regionRoutes);
 app.use("/api/locations", locationRoutes);
