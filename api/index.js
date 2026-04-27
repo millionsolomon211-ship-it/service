@@ -21,6 +21,16 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
+// Database connection middleware for Serverless
+app.use(async (req, res, next) => {
+    try {
+        await connectDB();
+        next();
+    } catch (error) {
+        res.status(500).json({ error: "Database connection failed" });
+    }
+});
+
 app.use('/img', express.static('img'));
 // Routes
 app.use("/api/regions", regionRoutes);

@@ -7,19 +7,21 @@ const client = new MongoClient(uri, { family: 4 });
 let db;
 
 async function connectDB() {
+    if (db) return db;
     try {
         await client.connect();
         console.log("Connected to MongoDB");
         db = client.db();
+        return db;
     } catch (error) {
         console.error("MongoDB connection error:", error);
-        process.exit(1);
+        throw error;
     }
 }
 
 function getDB() {
     if (!db) {
-        throw new Error("Database not initialized. Call connectDB first.");
+        throw new Error("Database not initialized. Ensure connectDB is awaited.");
     }
     return db;
 }
