@@ -32,7 +32,7 @@ app.use(async (req, res, next) => {
 });
 
 app.use('/img', express.static('img'));
-app.use('/img/regions', express.static('img/region')); // Alias to fix plural/singular mismatch
+app.use('/img/region', express.static('img/region')); // Alias to fix plural/singular mismatch
 // Routes
 app.use("/api/regions", regionRoutes);
 app.use("/api/locations", locationRoutes);
