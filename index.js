@@ -36,8 +36,15 @@ app.get("/", (req, res) => {
 });
 
 // Start Server
-connectDB().then(() => {
-    app.listen(port, () => {
-        console.log(`Server running on port ${port}`);
+if (process.env.NODE_ENV !== "production") {
+    connectDB().then(() => {
+        app.listen(port, () => {
+            console.log(`Server running on port ${port}`);
+        });
     });
-});
+} else {
+    // For Vercel Serverless Function
+    connectDB();
+}
+
+module.exports = app;
